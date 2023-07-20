@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Integral CF';
+    src: local('Integral CF Bold'), local('Integral-CF-Bold'),
+        url('IntegralCF-Bold.woff2') format('woff2'),
+        url('IntegralCF-Bold.woff') format('woff'),
+        url('IntegralCF-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }

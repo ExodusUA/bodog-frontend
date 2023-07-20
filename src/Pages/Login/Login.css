@@ -1,0 +1,28 @@
+.loginPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.loginWindow {
+    max-width: 400px;
+    width: 100%;
+    gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    display: grid;
+}
+
+.inputRow input {
+    margin-top: 10px;
+}
+
+.authRememberBlock {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.authRememberBlock label {
+    user-select: none;
+}
