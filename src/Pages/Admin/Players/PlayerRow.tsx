@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table } from 'flowbite-react'
 import User from '../../../interfaces/user'
+import { useNavigate } from 'react-router-dom'
 
 interface PropsTypes {
     user: User,
@@ -10,8 +11,10 @@ interface PropsTypes {
 
 function PlayerRow({ user, key }: PropsTypes) {
 
+    const navigate = useNavigate()
+
     return (
-        <Table.Row className={`dark:border-gray-700 dark:bg-gray-800`}>
+        <Table.Row className={`dark:border-gray-700 dark:bg-gray-800 cursor-pointer hover:bg-gray-50`} onClick={() => navigate(`/admin/player/${user.Id}`)}>
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 <p>
                     {user.Username}
@@ -24,7 +27,7 @@ function PlayerRow({ user, key }: PropsTypes) {
                 <p>{user.Email}</p>
             </Table.Cell>
             <Table.Cell>
-               {user.LastPick}
+                {user.LastPick}
             </Table.Cell>
             <Table.Cell>
                 {

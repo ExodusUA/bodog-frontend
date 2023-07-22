@@ -41,7 +41,7 @@ function Pagination({ currentPage, setCurrentPage, maxPage }: Props) {
 
     return (
         <div className="flex items-center justify-between border-t border-gray-200 bg-white py-3">
-            <div className="hidden w-full sm:flex sm:flex-1 sm:justify-end mt-8">
+            <div className="flex w-full sm:flex sm:flex-1 sm:justify-end mt-8">
                 <div>
                     <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
 
@@ -55,7 +55,7 @@ function Pagination({ currentPage, setCurrentPage, maxPage }: Props) {
                                 currentPage === page - 1 || currentPage === page + 1 || currentPage === page
                                     ? currentPage === maxPage - 1 || currentPage === maxPage
                                         ? null
-                                        : <Link onClick={e => setCurrentPage(page)} to="#" className={`relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300  focus:z-20 focus:outline-offset-0 md:inline-flex ${currentPage === page ? selectedColor : ''} `} >
+                                        : <Link onClick={e => setCurrentPage(page)} key={index} to="#" className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300  focus:z-20 focus:outline-offset-0 md:inline-flex ${currentPage === page ? selectedColor : ''} `} >
                                             {page}
                                         </Link>
                                     : null
@@ -73,7 +73,7 @@ function Pagination({ currentPage, setCurrentPage, maxPage }: Props) {
                         {
                             pagesArray.map((page, index) => (
                                 page === maxPage - 1 || page === maxPage
-                                    ? <Link to="#" onClick={e => setCurrentPage(page)} className={`relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 md:inline-flex ${currentPage === page ? selectedColor : ''}`} >
+                                    ? <Link to="#" key={index} onClick={e => setCurrentPage(page)} className={`relative items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 md:inline-flex ${currentPage === page ? selectedColor : ''}`} >
                                         {page}
                                     </Link>
                                     : null
