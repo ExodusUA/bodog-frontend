@@ -30,10 +30,11 @@ function Menu({ selectedPage }: PropsTypes) {
                             <p className='text-dark text-4 font-normal block'>Players List</p>
                         </Link>
 
-                        <Link to='/admin/fixtures' className='menuLink flex items-center py-3 px-3 mb-3 duration-300 gap-3 rounded-[6px] hover:bg-red'>
-                            <ListBulletIcon className='w-6 h-6 text-dark' />
+                        <Link to='/admin/fixtures' className={`menuLink flex items-center py-3 px-3 mb-3 duration-300 gap-3 rounded-[6px] hover:bg-red ${selectedPage === 'Fixtures' && activeLink}`}>
+                            <UsersIcon className={`w-6 h-6 text-dark ${selectedPage === 'Fixtures' ? 'text-white' : ''}`} />
                             <p className='text-dark text-4 font-normal block'>Fixture List</p>
                         </Link>
+
                     </div>
 
                     <div className='border-t-[1px] border-slate-300 pb-10 pt-6 mt-auto'>

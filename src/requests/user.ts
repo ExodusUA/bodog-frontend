@@ -23,12 +23,10 @@ interface FetchUsersData {
 }
 
 async function fetchUsers(firstId: number, lastId: number, isActiveOnly?: boolean | null, streakFilter?: boolean | null, aliveSorter?: boolean | null): Promise<UsersList> {
-    console.log(streakFilter)
     let data: FetchUsersData = {
         firstId: firstId,
         lastId: lastId,
     };
-
 
     if (isActiveOnly) {
         data.isAlive = isActiveOnly;
@@ -42,9 +40,9 @@ async function fetchUsers(firstId: number, lastId: number, isActiveOnly?: boolea
         data.streak = streakFilter === true ? 'max' : 'min';
     }
 
-    const users = await axios.post<UsersList>(process.env.REACT_APP_API_URL + '/api/v1/users', qs.stringify(data), {
+    const users = await axios.post<UsersList>(process.env.REACT_APP_API_URL + '/api/v1/users', JSON.stringify(data), {
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         },
     })

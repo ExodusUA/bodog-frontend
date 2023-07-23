@@ -8,6 +8,8 @@ import PlayerInfo from './Players/PlayerInfo'
 import logotype from '../../images/logotype.svg'
 import Settings from '../Settings/Settings'
 import { Bars3Icon } from '@heroicons/react/24/outline'
+import Fixtures from './Fixtures/Fixtures'
+import WeekInfo from './Fixtures/WeekInfo'
 
 function Admin() {
 
@@ -35,14 +37,14 @@ function Admin() {
           </div>
         </div>
 
-
-
         <div className='w-full p-3 h-screen box-border scroll pt-20 xl:pt-0'>
 
           <Routes>
             <Route path='/' element={<Dashboard setSelectedPage={setSelectedPage} />} />
             <Route path='/players' element={<Players setSelectedPage={setSelectedPage} />} />
             <Route path='/player/*' element={<PlayerInfo />} />
+            <Route path='/fixtures/' element={<Fixtures setSelectedPage={setSelectedPage} />} />
+            <Route path='/week/*' element={<WeekInfo />} />
             <Route path='/settings' element={<Settings setSelectedPage={setSelectedPage} />} />
           </Routes>
 
