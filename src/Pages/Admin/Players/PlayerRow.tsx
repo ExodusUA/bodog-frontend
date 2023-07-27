@@ -27,7 +27,14 @@ function PlayerRow({ user, key }: PropsTypes) {
                 <p>{user.Email}</p>
             </Table.Cell>
             <Table.Cell>
-                {user.LastPick}
+                {
+                    user.LastPick === null
+                        ? 'No pick yet'
+                        : <div className='flex gap-4 items-center'>
+                            <p>{user.LastPick?.FullName}</p>
+                            <img src={user.LastPick?.WikipediaLogoURL} alt="Team logo" className='w-8 h-8' />
+                        </div>
+                }
             </Table.Cell>
             <Table.Cell>
                 {

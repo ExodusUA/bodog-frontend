@@ -1,14 +1,19 @@
+import UserWeek from "./userWeek";
+
 interface User {
     Id: number,
     Username: string,
     Fullname: string,
     Email: string,
     AdminStatus: number,
-    EmailConfirm: boolean,
     IsAlive: boolean,
-    createdAt: string,
     Streak: number,
-    LastPick: string
+    createdAt: string,
+    LastPick?: null | {
+        FullName: string,
+        WikipediaLogoURL: string
+    },
+    Weeks?: UserWeek[] | undefined,
 }
 
 export default User;

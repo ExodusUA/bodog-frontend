@@ -10,6 +10,8 @@ import Settings from '../Settings/Settings'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 import Fixtures from './Fixtures/Fixtures'
 import WeekInfo from './Fixtures/WeekInfo'
+import getStatistic from '../../requests/stats'
+import Statistic from '../../interfaces/statistic'
 
 function Admin() {
 
@@ -20,6 +22,21 @@ function Admin() {
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [selectedPage])
+
+  const [stats, setStats] = React.useState<Statistic | null>(null)
+
+
+  useEffect(() => {
+
+    const statistics = getStatistic()
+
+    statistics.then((res: Statistic) => {
+      setStats(res)
+    }).catch((err) => {
+      console.log(err)
+    })
+    
+  }, [])
 
   return (
     <section className='admin bg-[#F4F4F4] overflow-hidden'>
@@ -40,7 +57,7 @@ function Admin() {
         <div className='w-full p-3 h-screen box-border scroll pt-20 xl:pt-0'>
 
           <Routes>
-            <Route path='/' element={<Dashboard setSelectedPage={setSelectedPage} />} />
+            <Route path='/' element={<Dashboard stats={stats} setSelectedPage={setSelectedPage} />} />
             <Route path='/players' element={<Players setSelectedPage={setSelectedPage} />} />
             <Route path='/player/*' element={<PlayerInfo />} />
             <Route path='/fixtures/' element={<Fixtures setSelectedPage={setSelectedPage} />} />

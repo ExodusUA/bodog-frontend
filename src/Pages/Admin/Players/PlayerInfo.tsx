@@ -20,6 +20,7 @@ function PlayerInfo() {
     const user = userAPI.getUserByID(userID)
 
     user.then((response) => {
+      console.log('week data', response)
       setUserData(response)
     }).catch((error) => {
       console.log(error)
@@ -59,14 +60,24 @@ function PlayerInfo() {
             </Table.HeadCell>
           </Table.Head>
 
-          <Table.Body className="divide-y">
-            <PlayerWeekRow />
-            <PlayerWeekRow />
-            <PlayerWeekRow />
-          </Table.Body>
+          {
+            userData?.Weeks?.length !== 0
+              ? <Table.Body className="divide-y">
+                {
+                  userData?.Weeks?.map((gameweek, index) => (
+                    <PlayerWeekRow key={index} data={gameweek} />
+                  ))
+                }
+              </Table.Body>
+              : null
+          }
 
         </Table>
-
+        {
+          userData?.Weeks?.length === 0
+            ? <div className='w-full py-4 flex justify-center'><p>No data found</p></div>
+            : null
+        }
       </div>
     </div>
   )

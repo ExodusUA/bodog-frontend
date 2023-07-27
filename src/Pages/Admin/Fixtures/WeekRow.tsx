@@ -1,21 +1,18 @@
-import React from 'react'
 import { Table } from 'flowbite-react'
-import { useNavigate } from 'react-router-dom'
 import Week from '../../../interfaces/gameweek'
 import moment from 'moment'
+import { useNavigate } from 'react-router-dom'
 
 interface PropsTypes {
-    week: Week,
-    key: number
+    week: Week
 }
 
+function WeekRow({ week }: PropsTypes) {
 
-function WeekRow({ week, key }: PropsTypes) {
-
-    const navigate = useNavigate()
+const navigate = useNavigate()
 
     return (
-        <Table.Row className={`dark:border-gray-700 dark:bg-gray-800 cursor-pointer hover:bg-gray-50`} onClick={() => navigate(`/admin/week/${week.id}`)}>
+        <Table.Row className={`dark:border-gray-700 dark:bg-gray-800 cursor-pointer hover:bg-[#e8000036]`} onClick={e => navigate(`/admin/week/${week.id}`)}>
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 <p>
                     Week {week.id}
@@ -29,17 +26,16 @@ function WeekRow({ week, key }: PropsTypes) {
             </Table.Cell>
 
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                <p>
+            <p>
                     {week.players}
                 </p>
             </Table.Cell>
 
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                <p>
+            <p>
                     {week.playersProgressed}
                 </p>
             </Table.Cell>
-
         </Table.Row>
     )
 }

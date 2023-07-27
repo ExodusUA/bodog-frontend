@@ -1,10 +1,8 @@
 import { Table } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
-
-import WeekRow from './WeekRow'
 import Week from '../../../interfaces/gameweek'
-
-/* INTERFACES */
+import WeekRow from './WeekRow'
+import getWeeksList from '../../../requests/weeks'
 
 interface PropsTypes {
   setSelectedPage: React.Dispatch<React.SetStateAction<string>>
@@ -14,31 +12,32 @@ function Fixtures({ setSelectedPage }: PropsTypes) {
 
   setSelectedPage('Fixtures')
 
-  const [weeks, setWeeks] = useState<Week[]>([
-    {
-      id: 1,
-      time: '2021-08-13T18:00:00.000Z',
-      players: 453,
-      playersProgressed: 231
-    }
-  ]) //main aray of weeks
+  const [weeks, setWeeks] = useState<Week[]>([]) //main aray of weeks
 
 
   /* GETTING WEEKS LIST */
 
   useEffect(() => {
 
+    const weeksData = getWeeksList()
+
+    weeksData.then((data: Week[]) => {
+      setWeeks(data)
+    }).catch((err) => {
+      console.log(err)
+    })
+
   }, [])
 
   return (
-    <div className='w-full h-full rounded-[12px] p-6'>
+    <div className='w-full h-[80vh] md:h-full rounded-[12px] p-6'>
       <div className='block md:flex justify-between items-center'>
         <p className='font-bold text-4xl color-dark font-title mb-4'>Fixture list</p>
       </div>
 
-      <div className='bg-white p-6 mt-16 rounded-[8px]'>
+      <div className='bg-white p-6 mt-16 rounded-[8px] overflow-y-auto h-[70vh] md:h-[80vh]'>
 
-        <div className='overflow-auto h-[400px] lg:overflow-hidden lg:h-full'>
+        <div className='lg:h-full'>
           <Table striped className='mt-10'>
             <Table.Head className='bg-[#F9FAFB]'>
               <Table.HeadCell className='capitalize text-[14px] text-gray text-bold'>
@@ -57,11 +56,9 @@ function Fixtures({ setSelectedPage }: PropsTypes) {
 
             <Table.Body className="divide-y">
               {
-                weeks.length > 0
-                  ? weeks.map((week, index) => (
-                    <WeekRow week={week} key={index} />
-                  ))
-                  : null
+                weeks.map((week, index) => (
+                  <WeekRow week={week} key={index} />
+                ))
               }
 
             </Table.Body>

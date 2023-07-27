@@ -42,7 +42,7 @@ function Login() {
       if (response.data.token) {
 
         var decoded = jwt_decode<DecodedData>(response.data.token);
-        
+
         if (decoded.AdminStatus !== 0) {
           window.localStorage.setItem('token', response.data.token)
           navigate('/admin')
@@ -82,7 +82,7 @@ function Login() {
 
   return (
     <section className='loginPage'>
-      <div className="loginWindow">
+      <div className="loginWindow w-[90vw] md:w-full">
         <div className='inputRow'>
           <Label htmlFor="email1" value="Your email" />
           <TextInput
@@ -98,7 +98,7 @@ function Login() {
           <Checkbox id="remember" />
           <Label htmlFor="remember">Remember me</Label>
         </div>
-        <Button color="dark" onClick={() => fieldsValidation() && userAuth()}>Login</Button>
+        <Button color="dark" className={'bg-red duration-300'} onClick={() => fieldsValidation() && userAuth()}>Login</Button>
 
         {
           authError.length > 0
