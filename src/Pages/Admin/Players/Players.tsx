@@ -118,7 +118,7 @@ function Players({ setSelectedPage }: PropsTypes) {
         </div>
       </div>
 
-      <div className='bg-white p-6 mt-16 rounded-[8px]'>
+      <div className='bg-white p-6 mt-4 md:mt-16 rounded-[8px]'>
         <div className='block sm:flex justify-between items-center'>
           <p className='font-bold text-[20px] text=[#111928]'>Total Players: {usersCount}</p>
           <div className='flex gap-4 items-center'>

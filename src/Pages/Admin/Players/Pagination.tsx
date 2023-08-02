@@ -1,7 +1,8 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
-import { Interface } from 'readline';
+import { Link, useNavigate } from 'react-router-dom';
+import userAPI from '../../../requests/user';
+
 
 
 interface Props {
@@ -15,6 +16,7 @@ const selectedColor = 'bg-red text-white'
 function Pagination({ currentPage, setCurrentPage, maxPage }: Props) {
 
     const [pagesArray, setPagesArray] = useState<number[]>([])
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -39,9 +41,19 @@ function Pagination({ currentPage, setCurrentPage, maxPage }: Props) {
         }
     }
 
+    async function getUsersDownloadLink() {
+        const res = userAPI.exportUsers();
+        
+        res.then((res) => {
+            window.location.replace(process.env.REACT_APP_API_URL + res.path);
+        });
+    }
+
     return (
-        <div className="flex items-center justify-between border-t border-gray-200 bg-white py-3">
-            <div className="flex w-full sm:flex sm:flex-1 sm:justify-end mt-8">
+        <div className="flex flex-col md:flex-row items-center justify-between border-t border-gray-200 bg-white py-3 pt-8">
+            <button className='mb-4 md:mb-0 w-full justify-center text-center md:w-[150px] flex items-center bg-red rounded-lg p-2 gap-2 px-4 duration-300 hover:opacity-50 text-white font-bold' onClick={e => getUsersDownloadLink()}>Export Users</button>
+            <div className="flex w-full justify-end">
+
                 <div>
                     <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
 

@@ -150,4 +150,17 @@ async function addAdmin(id: number, AdminStatus: number): Promise<addAdminRespon
     return res.data
 }
 
-export default { fetchUsers, searchUsers, getUserByID, getAdminList, addAdmin };
+/* EXPORT USERS */
+
+async function exportUsers(): Promise<any> {
+
+    const res = await axios.post(process.env.REACT_APP_API_URL + `/api/v1/generateUserList`, [], {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        },
+    })
+    return res.data
+}
+
+export default { fetchUsers, searchUsers, getUserByID, getAdminList, addAdmin, exportUsers };
