@@ -127,7 +127,7 @@ function Players({ setSelectedPage }: PropsTypes) {
           </div>
         </div>
 
-        <div className='overflow-auto h-[400px] lg:overflow-hidden lg:h-full'>
+        <div className='overflow-auto h-[400px] lg:overflow-auto lg:h-[65vh]'>
           <Table striped className='mt-10'>
             <Table.Head className='bg-[#F9FAFB]'>
               <Table.HeadCell className='capitalize text-[14px] text-gray text-bold'>
