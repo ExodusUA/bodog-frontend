@@ -1,7 +1,7 @@
 import './Menu.css'
 import logotype from '../../../images/logotype.svg'
 import { Link } from 'react-router-dom'
-import { HomeIcon, UsersIcon, ListBulletIcon, Cog8ToothIcon, ArrowRightCircleIcon } from '@heroicons/react/24/outline'
+import { HomeIcon, UsersIcon, CalendarDaysIcon, Cog8ToothIcon, ArrowRightCircleIcon } from '@heroicons/react/24/outline'
 
 interface PropsTypes {
     selectedPage: string
@@ -13,7 +13,7 @@ function Menu({ selectedPage }: PropsTypes) {
 
     return (
         <div className="p-3 h-screen box-border">
-            <div className='bg-white w-64 md:w-96 h-full rounded-[12px] p-6 drop-shadow-2xl'>
+            <div className='bg-white w-64 md:w-72 2xl:w-96 h-full rounded-[12px] p-6 drop-shadow-2xl'>
                 <div className='flex justify-start'>
                     <img className='w-32 text-left mb-9' src={logotype} alt="Logotype" />
                 </div>
@@ -31,7 +31,7 @@ function Menu({ selectedPage }: PropsTypes) {
                         </Link>
 
                         <Link to='/admin/fixtures' className={`menuLink flex items-center py-3 px-3 mb-3 duration-300 gap-3 rounded-[6px] hover:bg-red ${selectedPage === 'Fixtures' && activeLink}`}>
-                            <UsersIcon className={`w-6 h-6 text-dark ${selectedPage === 'Fixtures' ? 'text-white' : ''}`} />
+                            <CalendarDaysIcon className={`w-6 h-6 text-dark ${selectedPage === 'Fixtures' ? 'text-white' : ''}`} />
                             <p className='text-dark text-4 font-normal block'>Fixture List</p>
                         </Link>
 

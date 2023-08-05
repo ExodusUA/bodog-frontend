@@ -35,18 +35,18 @@ function Fixtures({ setSelectedPage }: PropsTypes) {
         <p className='font-bold text-4xl color-dark font-title mb-4'>Fixture list</p>
       </div>
 
-      <div className='bg-white p-6 mt-16 rounded-[8px] overflow-y-auto h-[70vh] md:h-[80vh]'>
+      <div className='bg-white p-6 mt-16 rounded-[8px]'>
 
-        <div className='lg:h-full'>
-          <Table striped className='mt-10'>
-            <Table.Head className='bg-[#F9FAFB]'>
+        <div className='overflow-y-auto h-[60vh] md:h-[75vh]'>
+          <Table striped className='mt-0'>
+            <Table.Head className='bg-[#F9FAFB] sticky top-0'>
               <Table.HeadCell className='capitalize text-[14px] text-gray text-bold'>
                 Gameweek
               </Table.HeadCell>
               <Table.HeadCell className='capitalize text-[14px] text-gray text-bold'>
                 Cut off time
               </Table.HeadCell>
-              <Table.HeadCell className='capitalize text-[14px] text-gray text-bold max-[200px]'>
+              <Table.HeadCell className='capitalize text-[14px] text-gray text-bold'>
                 Players made pick
               </Table.HeadCell>
               <Table.HeadCell className='capitalize text-[14px] text-gray text-bold'>
@@ -54,15 +54,18 @@ function Fixtures({ setSelectedPage }: PropsTypes) {
               </Table.HeadCell>
             </Table.Head>
 
-            <Table.Body className="divide-y">
-              {
-                weeks.map((week, index) => (
-                  <WeekRow week={week} key={index} />
-                ))
-              }
+           
+              <Table.Body className="divide-y">
+                {
+                  weeks.map((week, index) => (
+                    <WeekRow week={week} key={index} />
+                  ))
+                }
 
-            </Table.Body>
+              </Table.Body>
+       
           </Table>
+
         </div>
         {
           weeks.length === 0

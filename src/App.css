@@ -79,3 +79,7 @@
  ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+.dashboardBlock {
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.05);
+}

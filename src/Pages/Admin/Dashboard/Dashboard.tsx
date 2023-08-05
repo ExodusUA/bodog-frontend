@@ -16,8 +16,8 @@ function Dashboard({ setSelectedPage, stats }: PropsTypes) {
 
   return (
     <div className='h-full'>
-      <div className='w-full rounded-[12px] p-6 md:p-12 h-full'>
-        <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-4 md:gap-10 h-full overflow-auto'>
+      <div className='w-full rounded-[12px] md:pl-6 md:pr-6 md:pt-4 h-full'>
+        <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-4 md:gap-10 h-full overflow-auto sm:overflow-none '>
           <DashboardInfo title={stats?.allUsers} text={'Entries'} />
           <DashboardInfo title={stats?.survivors} text={'Survivors'} />
           <DashboardInfo title={stats?.team?.FullName} text={'Most picked this week'} teamLogotype={stats?.team?.WikipediaLogoURL} />

@@ -29,18 +29,18 @@ function PlayerRow({ user, key }: PropsTypes) {
             <Table.Cell>
                 {
                     user.LastPick === null
-                        ? 'No pick yet'
+                        ? <p className='pl-12'>No pick yet</p>
                         : <div className='flex gap-4 items-center'>
-                            <p>{user.LastPick?.FullName}</p>
                             <img src={user.LastPick?.WikipediaLogoURL} alt="Team logo" className='w-8 h-8' />
+                            <p>{user.LastPick?.FullName}</p>
                         </div>
                 }
             </Table.Cell>
             <Table.Cell>
                 {
                     user.IsAlive === true
-                        ? <span className="inline-flex items-center rounded-md px-2 pb-1 text-xs font-medium text-white ring-inset uppercase font-title bg-[#D7AA50]">Active</span>
-                        : <span className="inline-flex items-center rounded-md bg-[#E80000] text-white px-2 pb-1 text-xs font-medium text-red-700 uppercase font-title">deceased</span>
+                        ? <span className="inline-flex items-center rounded-md px-2 pb-1 text-xs font-medium text-white ring-inset uppercase font-title bg-[#D7AA50] xl:pb-[2px]">Active</span>
+                        : <span className="inline-flex items-center rounded-md bg-[#E80000] text-white px-2 pb-1 text-xs font-medium text-red-700 uppercase font-title xl:pb-[2px]">deceased</span>
                 }
             </Table.Cell>
             <Table.Cell>

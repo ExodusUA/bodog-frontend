@@ -17,7 +17,7 @@ function WeekInfo() {
 
   useEffect(() => {
 
-    
+
     const gamesData = getGames(weekID)
 
     gamesData.then((data: Game[]) => {
@@ -38,44 +38,40 @@ function WeekInfo() {
         <p>Back to the fixtures list</p>
       </Link>
 
-      <div className='bg-white p-6 mt-6 rounded-[8px] overflow-y-auto h-[80vh]'>
-      
-        <Table striped className='mt-10'>
-          <Table.Head className='bg-[#F9FAFB]'>
-            <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold'>
-              Date
-            </Table.HeadCell>
-            <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold'>
-              Time
-            </Table.HeadCell>
-            <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold text-right'>
-              Team 1
-            </Table.HeadCell>
-            <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold text-right px-2'>
+      <div className='p-6 bg-white mt-6 rounded-[8px]'>
+        <div className='overflow-y-auto h-[78vh]'>
+          <Table striped>
+            <Table.Head className='bg-[#F9FAFB] sticky top-0'>
+              <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold '>
+                Date
+              </Table.HeadCell>
+              <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold '>
+                Time
+              </Table.HeadCell>
+              <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold text-right '>
+                Team 1
+              </Table.HeadCell>
+              <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold text-right px-2'>
 
-            </Table.HeadCell>
-            <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold'>
-              Team 2
-            </Table.HeadCell>
-          </Table.Head>
+              </Table.HeadCell>
+              <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold'>
+                Team 2
+              </Table.HeadCell>
+            </Table.Head>
 
+            <Table.Body className="divide-y ">
 
-          <Table.Body className="divide-y ">
+              {
+                gamesData !== null
+                  ? gamesData?.map((game: Game) => (
+                    <GameRow game={game} key={game.Id} />
+                  ))
+                  : null
+              }
 
-            {
-              gamesData !== null
-                ? gamesData?.map((game: Game) => (
-                  <GameRow game={game} key={game.Id} />
-                ))
-                : null
-            }
-
-          </Table.Body>
-
-
-
-        </Table>
-
+            </Table.Body>
+          </Table>
+        </div>
       </div>
     </div>
   )
