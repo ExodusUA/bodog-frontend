@@ -6,6 +6,7 @@ import userAPI from '../../requests/user'
 import AdminRow from './AdminRow'
 import AddAdmin from '../../UI/Modals/AddAdmin'
 import Alert from '../../UI/Alert/Alert'
+import settings from '../../requests/settings'
 
 
 interface PropsTypes {
@@ -30,6 +31,25 @@ function Settings({ setSelectedPage }: PropsTypes) {
 
     }, [])
 
+    const [activeWeek, setActiveWeek] = React.useState<string | number>(1)
+    const [activeYear, setActiveYear] = React.useState<string | number>(2023)
+
+    useEffect(() => {
+
+        /* GET CURRENT WEEK AND YEAR DATA */
+
+    }, [])
+
+    function updateWeekYear() {
+
+        const res = settings.changeWeekYear(activeWeek, activeYear)
+
+        res.then((response) => {
+            console.log(response)
+        })
+
+    }
+
     return (
         <div className='w-full h-full rounded-[12px] p-6'>
             <div className='flex justify-between items-center'>
@@ -46,9 +66,38 @@ function Settings({ setSelectedPage }: PropsTypes) {
             </div>
 
             <div className='bg-white p-6 mt-16 rounded-[8px] h-[90%] pb-4'>
-                <p className='font-bold text-[20px] text=[#111928]'>Total Admins: {admins.length}</p>
+
+                <div className='mb-10'>
+                    <p className='font-bold text-[20px] text=[#111928]'>Testing tool</p>
+
+                    <div className='flex gap-2 items-center'>
+                        <p>Current Week & Year:</p>
+                        <select className='' name="weekSelect" id="weekSelect" onChange={e => setActiveWeek(e.target.value)}>
+                            {
+                                Array.from(Array(19).keys()).slice(1).map((week, index) => (
+                                    <option key={index} value={week}>{week}</option>
+                                ))
+                            }
+                        </select>
+
+                        <select className='' name="yearSelect" id="yearSelect" onChange={e => setActiveYear(e.target.value)}>
+                            {
+                                [2022, 2023].map((week, index) => (
+                                    <option key={index} value={week}>{week}</option>
+                                ))
+                            }
+                        </select>
+
+                        <button onClick={e => updateWeekYear()} className='flex items-center bg-red rounded-lg p-2 gap-2 px-4 duration-300 hover:opacity-50 text-white font-bold'>Save</button>
+                    </div>
+
+                </div>
+
 
                 <div className='overflow-auto h-[100%]'>
+
+                    <p className='font-bold text-[20px] text=[#111928]'>Total Admins: {admins.length}</p>
+
                     <Table striped className='mt-10' >
                         <Table.Head className='bg-[#F9FAFB]'>
                             <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold'>
