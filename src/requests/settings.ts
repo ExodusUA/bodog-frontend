@@ -6,7 +6,7 @@ async function changeWeekYear(week: string | number, year: string | number): Pro
 
     let data = JSON.stringify({
         week: Number(week),
-        year: year
+        season: year
     });
 
     const res = await axios.post(process.env.REACT_APP_API_URL + `/api/v1/setCurrentSeasonOrWeek`, data, {

@@ -7,6 +7,7 @@ import AdminRow from './AdminRow'
 import AddAdmin from '../../UI/Modals/AddAdmin'
 import Alert from '../../UI/Alert/Alert'
 import settings from '../../requests/settings'
+import getStatistic from '../../requests/stats'
 
 
 interface PropsTypes {
@@ -20,6 +21,7 @@ function Settings({ setSelectedPage }: PropsTypes) {
     const [admins, setAdmins] = React.useState<User[]>([])
     const [isAdminModalOpen, setIsAdminModalOpen] = React.useState<boolean>(false)
     const [alertOpen, setAlertOpen] = React.useState<boolean>(false)
+    const [seasonAlertOpen, setSeasonAlertOpen] = React.useState<boolean>(false)
 
     useEffect(() => {
 
@@ -36,7 +38,13 @@ function Settings({ setSelectedPage }: PropsTypes) {
 
     useEffect(() => {
 
-        /* GET CURRENT WEEK AND YEAR DATA */
+        const res = getStatistic()
+
+        res.then((response: any) => {
+            console.log(response)
+            setActiveWeek(response.currentWeek)
+            setActiveYear(response.currentSeason)
+        })
 
     }, [])
 
@@ -45,7 +53,9 @@ function Settings({ setSelectedPage }: PropsTypes) {
         const res = settings.changeWeekYear(activeWeek, activeYear)
 
         res.then((response) => {
-            console.log(response)
+            if (response === 'changed') {
+                setSeasonAlertOpen(true)
+            }
         })
 
     }
@@ -72,7 +82,7 @@ function Settings({ setSelectedPage }: PropsTypes) {
 
                     <div className='flex gap-2 items-center'>
                         <p>Current Week & Year:</p>
-                        <select className='' name="weekSelect" id="weekSelect" onChange={e => setActiveWeek(e.target.value)}>
+                        <select className='' name="weekSelect" id="weekSelect" value={activeWeek} onChange={e => setActiveWeek(e.target.value)}>
                             {
                                 Array.from(Array(19).keys()).slice(1).map((week, index) => (
                                     <option key={index} value={week}>{week}</option>
@@ -80,7 +90,7 @@ function Settings({ setSelectedPage }: PropsTypes) {
                             }
                         </select>
 
-                        <select className='' name="yearSelect" id="yearSelect" onChange={e => setActiveYear(e.target.value)}>
+                        <select className='' name="yearSelect" id="yearSelect" value={activeYear} onChange={e => setActiveYear(e.target.value)}>
                             {
                                 [2022, 2023].map((week, index) => (
                                     <option key={index} value={week}>{week}</option>
@@ -131,6 +141,10 @@ function Settings({ setSelectedPage }: PropsTypes) {
 
             {
                 alertOpen && <Alert type={'done'} text='Admin added successfully!' closeHandler={setAlertOpen} />
+            }
+
+            {
+                seasonAlertOpen && <Alert type={'done'} text='Current week & season saved!' closeHandler={setSeasonAlertOpen} />
             }
         </div>
     )
