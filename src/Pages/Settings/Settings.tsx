@@ -60,6 +60,16 @@ function Settings({ setSelectedPage }: PropsTypes) {
 
     }
 
+    function getResultsFunc() {
+
+        const res = settings.getResults()
+
+        res.then((response) => {
+            console.log(response)
+        })
+
+    }
+
     return (
         <div className='w-full h-full rounded-[12px] p-6'>
             <div className='flex justify-between items-center'>
@@ -99,6 +109,7 @@ function Settings({ setSelectedPage }: PropsTypes) {
                         </select>
 
                         <button onClick={e => updateWeekYear()} className='flex items-center bg-red rounded-lg p-2 gap-2 px-4 duration-300 hover:opacity-50 text-white font-bold'>Save</button>
+                        <button onClick={e => getResultsFunc()} className='flex items-center bg-red rounded-lg p-2 gap-2 px-4 duration-300 hover:opacity-50 text-white font-bold'>Get results</button>
                     </div>
 
                 </div>

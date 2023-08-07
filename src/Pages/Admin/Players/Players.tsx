@@ -44,11 +44,6 @@ function Players({ setSelectedPage }: PropsTypes) {
     let firstId = (currentPage - 1) * usersPerPage;
     let lastId = (currentPage - 1) * usersPerPage + usersPerPage
 
-    let params = {
-      firstId: firstId,
-      lastId: lastId,
-    }
-
 
     const users = userAPI.fetchUsers(firstId, lastId, isAliveFilter === true && isAliveFilter, streakFilter !== null ? streakFilter : null, aliveSorter !== null ? aliveSorter : null)
 
@@ -57,7 +52,7 @@ function Players({ setSelectedPage }: PropsTypes) {
       setUsersCount(response.allUsers)
     })
 
-  }, [usersPerPage, isAliveFilter, streakFilter, aliveSorter])
+  }, [usersPerPage, isAliveFilter, streakFilter, aliveSorter, currentPage])
 
 
   /* SEARCH USERS */

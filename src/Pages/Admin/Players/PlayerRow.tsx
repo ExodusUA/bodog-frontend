@@ -45,7 +45,7 @@ function PlayerRow({ user, key }: PropsTypes) {
             </Table.Cell>
             <Table.Cell>
                 {
-                    user.Streak
+                    user.Streak === -1 ? 0 : user.Streak
                 }
             </Table.Cell>
         </Table.Row>
