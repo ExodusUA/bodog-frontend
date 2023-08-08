@@ -6,19 +6,23 @@ interface AuthCheckProps {
 }
 
 const AuthCheck = ({ children }: AuthCheckProps) => {
-    
 
     const token = localStorage.getItem('token')
 
-    const decoded = jwtDecode<any>(token!)
-
-
-    if (!token || decoded.exp * 1000 < Date.now()) {
+    if (!token) {
         return <Navigate to="/login" />
+    } else {
+        
+        const decoded = jwtDecode<any>(token!)
+
+        if (decoded.exp * 1000 < Date.now()) {
+            return <Navigate to="/login" />
+        }
     }
 
     return <>{children}</>
 
 }
+
 
 export default AuthCheck
