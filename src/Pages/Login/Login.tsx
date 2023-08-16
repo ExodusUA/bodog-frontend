@@ -63,11 +63,12 @@ function Login() {
 
     /* EMAIL VALIDATE */
 
-    let regExpEmail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    let regExpEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 
     if (!userLogin.match(regExpEmail)) {
-      setAuthError('Error! Email is not valid')
-      isValid = false
+      setAuthError('Error! Email is not valid');
+      isValid = false;
     }
 
     /* PASSWORD VALDATE */

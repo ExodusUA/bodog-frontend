@@ -1,9 +1,6 @@
-import { PlusCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
-import { Table } from 'flowbite-react'
 import React, { useEffect } from 'react'
 import User from '../../interfaces/user'
 import userAPI from '../../requests/user'
-import AdminRow from './AdminRow'
 import AddAdmin from '../../UI/Modals/AddAdmin'
 import Alert from '../../UI/Alert/Alert'
 import settings from '../../requests/settings'
@@ -65,7 +62,7 @@ function Settings({ setSelectedPage }: PropsTypes) {
         const res = settings.getResults()
 
         res.then((response) => {
-            console.log(response)
+            setAlertOpen(true)
         })
 
     }
@@ -77,10 +74,14 @@ function Settings({ setSelectedPage }: PropsTypes) {
 
                 <div className='flex items-center gap-10'>
                     <div className='items-center flex relative'>
-                        <button className='flex items-center bg-red rounded-lg p-2 gap-2 duration-300 hover:opacity-50' onClick={e => setIsAdminModalOpen(true)}>
+                        {
+                            /*
+                            <button className='flex items-center bg-red rounded-lg p-2 gap-2 duration-300 hover:opacity-50' onClick={e => setIsAdminModalOpen(true)}>
                             <PlusCircleIcon className='w-6 h-6 text-white' />
                             <p className='text-white text-[14px] font-bold'>Add Admin</p>
                         </button>
+                            */
+                        }
                     </div>
                 </div>
             </div>
@@ -115,7 +116,9 @@ function Settings({ setSelectedPage }: PropsTypes) {
                 </div>
 
 
-                <div className='overflow-auto h-[100%]'>
+                {
+                    /*
+                    <div className='overflow-auto h-[100%]'>
 
                     <p className='font-bold text-[20px] text=[#111928]'>Total Admins: {admins.length}</p>
 
@@ -145,13 +148,15 @@ function Settings({ setSelectedPage }: PropsTypes) {
 
                     </Table>
                 </div>
+                    */
+                }
             </div>
             {
                 isAdminModalOpen && <AddAdmin setIsModalOpen={setIsAdminModalOpen} setAlertOpen={setAlertOpen} admins={admins} setAdmins={setAdmins}></AddAdmin>
             }
 
             {
-                alertOpen && <Alert type={'done'} text='Admin added successfully!' closeHandler={setAlertOpen} />
+                alertOpen && <Alert type={'done'} text='Results uploaded successfully!' closeHandler={setAlertOpen} />
             }
 
             {
