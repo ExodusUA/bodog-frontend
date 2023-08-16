@@ -2,6 +2,7 @@ import { Table } from 'flowbite-react'
 import Week from '../../../interfaces/gameweek'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
+import 'moment-timezone';
 
 interface PropsTypes {
     week: Week
@@ -9,7 +10,12 @@ interface PropsTypes {
 
 function WeekRow({ week }: PropsTypes) {
 
-const navigate = useNavigate()
+    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const parsedDate = moment(week.time);
+    const userLocalDate = parsedDate.tz(userTimezone);
+
+
+    const navigate = useNavigate()
 
     return (
         <Table.Row className={`dark:border-gray-700 dark:bg-gray-800 cursor-pointer hover:bg-[#e8000036]`} onClick={e => navigate(`/admin/week/${week.id}`)}>
@@ -21,18 +27,18 @@ const navigate = useNavigate()
 
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 <p>
-                    {moment(week.time).format('DD/MM/YYYY HH:mm')} GMT
+                    {userLocalDate.format('DD/MM/YYYY HH:mm')}
                 </p>
             </Table.Cell>
 
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-            <p>
+                <p>
                     {week.players}
                 </p>
             </Table.Cell>
 
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-            <p>
+                <p>
                     {week.playersProgressed}
                 </p>
             </Table.Cell>

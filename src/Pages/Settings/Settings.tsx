@@ -110,7 +110,7 @@ function Settings({ setSelectedPage }: PropsTypes) {
                         </select>
 
                         <button onClick={e => updateWeekYear()} className='flex items-center bg-red rounded-lg p-2 gap-2 px-4 duration-300 hover:opacity-50 text-white font-bold'>Save</button>
-                        <button onClick={e => getResultsFunc()} className='flex items-center bg-red rounded-lg p-2 gap-2 px-4 duration-300 hover:opacity-50 text-white font-bold'>Get results</button>
+                        <button onClick={e => getResultsFunc()} className='flex items-center bg-red rounded-lg p-2 gap-2 px-4 duration-300 hover:opacity-50 text-white font-bold'>Update shelude & Get results</button>
                     </div>
 
                 </div>

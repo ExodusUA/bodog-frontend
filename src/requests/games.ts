@@ -13,9 +13,13 @@ async function getGames(week: number): Promise<any> {
     })
 
     let data: Game[] = games.data.map((game: any) => {
+        console.log(game)
         return {
             DateTime: game.DateTime,
             Id: game.Id,
+            MatchID: game.GlobalGameID,
+            AwayTeamId: game.AwayTeamId,
+            HomeTeamId: game.HomeTeamId,
             AwayTeamName: game.AwayTeam.FullName,
             HomeTeamName: game.HomeTeam.FullName,
             AwayTeamLogo: game.AwayTeam.WikipediaLogoURL,

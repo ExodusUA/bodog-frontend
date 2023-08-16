@@ -4,7 +4,10 @@ interface Game {
     AwayTeamName: string,
     HomeTeamName: string,
     AwayTeamLogo: string,
-    HomeTeamLogo: string
+    HomeTeamLogo: string,
+    AwayTeamId?: number,
+    HomeTeamId?: number,
+    MatchID?: number,
 }
 
 

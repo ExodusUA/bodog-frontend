@@ -32,4 +32,24 @@ async function getResults(): Promise<any> {
     return res
 }
 
-export default { changeWeekYear, getResults };
+/* SELECT WINNER TEAM */
+
+async function selectWinnerTeam(teamId: string, matchId: string): Promise<any> {
+
+    let data = JSON.stringify({
+        gameId: matchId,
+        teamId: teamId
+    });
+
+    const res = await axios.post(process.env.REACT_APP_API_URL + `/api/v1/setTeamWin`, data, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        }
+    })
+
+    return res
+
+}
+
+export default { changeWeekYear, getResults, selectWinnerTeam };

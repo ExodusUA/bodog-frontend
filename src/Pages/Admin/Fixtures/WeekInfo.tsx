@@ -57,6 +57,11 @@ function WeekInfo() {
               <Table.HeadCell className='capitalize text-[14px] text-lightGray text-bold'>
                 Team 2
               </Table.HeadCell>
+              <Table.Cell className='capitalize text-[14px] text-lightGray text-bold'>
+                <p>
+                  Action
+                </p>
+              </Table.Cell>
             </Table.Head>
 
             <Table.Body className="divide-y ">
