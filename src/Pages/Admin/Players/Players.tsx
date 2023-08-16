@@ -15,7 +15,7 @@ interface PropsTypes {
 
 function Players({ setSelectedPage }: PropsTypes) {
 
-  const usersPerPage = 50;
+  const usersPerPage = 100;
   setSelectedPage('Players')
 
   const [users, setUsers] = useState<User[]>([]) //main aray of users
