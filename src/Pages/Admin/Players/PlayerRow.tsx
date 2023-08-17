@@ -13,6 +13,8 @@ function PlayerRow({ user, key }: PropsTypes) {
 
     const navigate = useNavigate()
 
+console.log(user)
+
     return (
         <Table.Row className={`dark:border-gray-700 dark:bg-gray-800 cursor-pointer hover:bg-gray-50`} onClick={() => navigate(`/admin/player/${user.Id}`)}>
             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">

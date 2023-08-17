@@ -15,18 +15,16 @@ interface addAdminResponse {
 }
 
 interface FetchUsersData {
-    firstId: number;
-    lastId: number;
+    page: number;
     isAlive?: boolean | null;
     streak?: string,
     aliveSorter?: boolean | null;
 }
 
 
-async function fetchUsers(firstId: number, lastId: number, isActiveOnly?: boolean | null, streakFilter?: boolean | null, aliveSorter?: boolean | null): Promise<UsersList> {
+async function fetchUsers(page: number, isActiveOnly?: boolean | null, streakFilter?: boolean | null, aliveSorter?: boolean | null): Promise<UsersList> {
     let data: FetchUsersData = {
-        firstId: firstId,
-        lastId: lastId,
+        page: page,
     };
 
     if (isActiveOnly) {
@@ -83,7 +81,23 @@ async function searchUsers(keyword: string): Promise<User[]> {
         },
     })
 
-    return users.data
+    let usersData = users.data;
+
+    usersData.map((user: any) => {
+
+        let pickData;
+
+        if (user.LastPick !== 'test') {
+            pickData = JSON.parse(user.LastPick)
+        }
+
+        user.LastPick = user.LastPick !== 'test' ? {
+            FullName: pickData ? pickData.FullName : null,
+            WikipediaLogoURL: pickData ? pickData.WikipediaLogoURL : null
+        } : null
+    });
+
+    return usersData
 }
 
 /* GET SINGLE USER DATA */

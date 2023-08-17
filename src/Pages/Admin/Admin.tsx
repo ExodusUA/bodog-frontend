@@ -60,7 +60,7 @@ function Admin() {
             <Route path='/' element={<Dashboard stats={stats} setSelectedPage={setSelectedPage} />} />
             <Route path='/players' element={<Players setSelectedPage={setSelectedPage} />} />
             <Route path='/player/*' element={<PlayerInfo />} />
-            <Route path='/fixtures/' element={<Fixtures setSelectedPage={setSelectedPage} />} />
+            <Route path='/fixtures/' element={<Fixtures setSelectedPage={setSelectedPage} statistics={stats} />} />
             <Route path='/week/*' element={<WeekInfo />} />
             <Route path='/settings' element={<Settings setSelectedPage={setSelectedPage} />} />
           </Routes>

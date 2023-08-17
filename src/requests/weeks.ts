@@ -13,10 +13,11 @@ async function getWeeksList(): Promise<any> {
 
     let data = weeks.data.map((week: any) => {
         return {
-            id: week.Id,
+            id: week.Week,
             time: week.CutOffTime,
             players: week.PlayersPicks,
-            playersProgressed: week.PlayersProgressed
+            playersProgressed: week.PlayersProgressed,
+            season: week.Season
         }
     });
 

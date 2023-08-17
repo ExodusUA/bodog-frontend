@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react'
 import Week from '../../../interfaces/gameweek'
 import WeekRow from './WeekRow'
 import getWeeksList from '../../../requests/weeks'
+import Statistic from '../../../interfaces/statistic'
 
 interface PropsTypes {
   setSelectedPage: React.Dispatch<React.SetStateAction<string>>
+  statistics: Statistic | null
 }
 
-function Fixtures({ setSelectedPage }: PropsTypes) {
+function Fixtures({ setSelectedPage, statistics }: PropsTypes) {
 
   setSelectedPage('Fixtures')
 
@@ -22,12 +24,15 @@ function Fixtures({ setSelectedPage }: PropsTypes) {
     const weeksData = getWeeksList()
 
     weeksData.then((data: Week[]) => {
-      setWeeks(data)
+
+      let filteredData = data.filter((week: Week) => week.season === Number(statistics?.currentSeason))
+      console.log(statistics?.currentSeason)
+      setWeeks(filteredData)
     }).catch((err) => {
       console.log(err)
     })
 
-  }, [])
+  }, [statistics])
 
   return (
     <div className='w-full h-[80vh] md:h-full rounded-[12px] p-6'>
@@ -54,16 +59,16 @@ function Fixtures({ setSelectedPage }: PropsTypes) {
               </Table.HeadCell>
             </Table.Head>
 
-           
-              <Table.Body className="divide-y">
-                {
-                  weeks.map((week, index) => (
-                    <WeekRow week={week} key={index} />
-                  ))
-                }
 
-              </Table.Body>
-       
+            <Table.Body className="divide-y">
+              {
+                weeks.map((week, index) => (
+                  <WeekRow week={week} key={index} />
+                ))
+              }
+
+            </Table.Body>
+
           </Table>
 
         </div>

@@ -15,7 +15,7 @@ interface PropsTypes {
 
 function Players({ setSelectedPage }: PropsTypes) {
 
-  const usersPerPage = 100;
+  const usersPerPage = 50;
   setSelectedPage('Players')
 
   const [users, setUsers] = useState<User[]>([]) //main aray of users
@@ -45,7 +45,7 @@ function Players({ setSelectedPage }: PropsTypes) {
     let lastId = (currentPage - 1) * usersPerPage + usersPerPage
 
 
-    const users = userAPI.fetchUsers(firstId, lastId, isAliveFilter === true && isAliveFilter, streakFilter !== null ? streakFilter : null, aliveSorter !== null ? aliveSorter : null)
+    const users = userAPI.fetchUsers(currentPage, isAliveFilter === true && isAliveFilter, streakFilter !== null ? streakFilter : null, aliveSorter !== null ? aliveSorter : null)
 
     users.then((response) => {
       setUsers(response.users)
