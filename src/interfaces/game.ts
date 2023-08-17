@@ -8,6 +8,8 @@ interface Game {
     AwayTeamId?: number,
     HomeTeamId?: number,
     MatchID?: number,
+    AwayTeamCity?: string,
+    HomeTeamCity?: string,
 }
 
 

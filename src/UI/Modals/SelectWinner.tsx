@@ -56,12 +56,12 @@ function SelectWinner({ setIsModalOpen, data, setAlertOpen }: PropsTypes) {
 
                             <div className='w-full py-2 pl-4 border-l-2 border-transparent duration-300 hover:border-red cursor-pointer flex items-center gap-2' onClick={e => setSearchValue(teams.AwayTeamName)}>
                                 <img className='w-5 h-5' src={teams.AwayTeamLogo} alt="Logo" />
-                                <p className='font-bold text-[14px]'>{teams.AwayTeamName}</p>
+                                <p className='font-bold text-[14px]'>{teams.AwayTeamCity + ' ' + teams.AwayTeamName}</p>
                             </div>
 
                             <div className='w-full py-2 pl-4 border-l-2 border-transparent duration-300 hover:border-red cursor-pointer flex items-center gap-2' onClick={e => setSearchValue(teams.HomeTeamName)}>
                                 <img className='w-5 h-5' src={teams.HomeTeamLogo} alt="Logo" />
-                                <p className='font-bold text-[14px]'>{teams.HomeTeamName}</p>
+                                <p className='font-bold text-[14px]'>{teams.HomeTeamCity + ' ' + teams.HomeTeamName}</p>
                             </div>
 
                         </div>

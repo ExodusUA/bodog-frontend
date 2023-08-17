@@ -24,6 +24,8 @@ async function getGames(week: number): Promise<any> {
             HomeTeamName: game.HomeTeam.FullName,
             AwayTeamLogo: game.AwayTeam.WikipediaLogoURL,
             HomeTeamLogo: game.HomeTeam.WikipediaLogoURL,
+            AwayTeamCity: game.AwayTeam.City,
+            HomeTeamCity: game.HomeTeam.City,
         }
     });
 

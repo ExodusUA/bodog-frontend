@@ -35,7 +35,7 @@ function GameRow({ game }: PropsTypes) {
 
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white w-[200px]">
                     <p className='flex items-center gap-4 text-right justify-end'>
-                        {game.AwayTeamName}
+                        {game.AwayTeamCity + ' ' + game.AwayTeamName}
                         <img className='w-10' src={game.AwayTeamLogo} alt="Team Logotype" />
                     </p>
                 </Table.Cell>
@@ -47,7 +47,7 @@ function GameRow({ game }: PropsTypes) {
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white w-[200px]">
                     <p className='flex items-center gap-4'>
                         <img className='w-10' src={game.HomeTeamLogo} alt="Team Logotype" />
-                        {game.HomeTeamName}
+                        {game.HomeTeamCity + ' ' + game.HomeTeamName}
                     </p>
                 </Table.Cell>
 

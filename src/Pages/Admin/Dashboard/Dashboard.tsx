@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Dashboard.css'
 import DashboardInfo from './DashboardInfo/DashboardInfo'
-import teamLogotype from '../../../images/teamLogo.png'
-import getStatistic from '../../../requests/stats'
 import Statistic from '../../../interfaces/statistic'
 
 interface PropsTypes {
@@ -20,7 +18,7 @@ function Dashboard({ setSelectedPage, stats }: PropsTypes) {
         <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-4 md:gap-10 h-full overflow-auto sm:overflow-none '>
           <DashboardInfo title={stats?.allUsers} text={'Entries'} />
           <DashboardInfo title={stats?.survivors} text={'Survivors'} />
-          <DashboardInfo title={stats?.team?.FullName} text={'Most picked this week'} teamLogotype={stats?.team?.WikipediaLogoURL} />
+          <DashboardInfo title={stats?.team?.City + ' ' + stats?.team?.FullName} text={'Most picked this week'} teamLogotype={stats?.team?.WikipediaLogoURL} />
           <DashboardInfo title={stats?.currentWeek} text={'Current game week'} />
         </div>
       </div>
